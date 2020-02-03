@@ -1,6 +1,6 @@
 :root {
   --dark: #000;
-  --course: #00B0FC;
+  --course: rgb(252, 0, 84);
   --light: #fff;
 }
 body {
@@ -23,67 +23,10 @@ header {
   align-items: center;
 }
 h1 {
-  font-size: 7vw;
+  font-size: 3vw;
+  color:white;
 }
 h2 {
   font-size: 2em;
   margin-top: 1.5em;
-}
-ul {
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  padding: 0;
-  margin: 0 -1rem;
-}
-ul li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-}
-ul img {
-  border: 2px solid var(--light);
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
-img {
-  max-width: 100%;
-}
-section#lecturers ul { 
-  flex-wrap:wrap;
-  
-}
-section#lecturers li {
-  width:45%;
-  text-align:center;
-}
-section#lecturers li:nth-child(3) {
-  width:100%
-}
-section#lecturers img {
-  border-radius: 100%;
-  margin-right: 1em;
-  width:20vw;
-}
-section#lecturers a {
-  white-space:nowrap;
-}
-.button {
-  background: var(--light);
-  color: var(--dark);
-  padding: 1em;
-}
-
-.examples img {
-  max-width: 25vh;
-}
-
-a,
-a:visited {
-  color: var(--course);
-}
-
-footer {
-  font-style: italic;
 }
