@@ -1,15 +1,16 @@
-# Who is hungry?
+# Storytime
 
-The Meal Db
+New York times
 
-In this course I'm fetiching ingredients from [MealDB](https://www.themealdb.com/).
+In this project I'm fetching stories from [The NewYorkTimes](https://developer.nytimes.com/). 
+The main focus are the top stories posten on Facebook.
 
 ## Goal
 
 1. Fetch data
 1. Render data to HTML and style it with CSS
-1. Filter recipes
-1. Search for specific recipe
+1. Filter on categorie
+1. Read full story 
 1. (extra time) Add to local storage
 
 ## Clone project
