@@ -21,10 +21,32 @@ function renderData(data) {
     console.log(data)
 
     data.map(d => {
-        let d1 = document.querySelector('.containinfo');
-        let create = document.createElement('p')
-        let data = d.title
-        d1.insertAdjacentHTML('afterend', `<p>${data}</p>`);
+        let title = document.querySelector('.containinfo');
+        let dataTitle = d.title
+        let info = d.abstract
+        let urlArticle = d.url
+        let img = d.multimedia[0].url
+        let date = d.published_date
+
+        title.insertAdjacentHTML('afterbegin', `
+        <div class="articles"> 
+        <img src="${img}"> 
+        <div class="contentwrap">
+        <p>${d.section} ${d.subsection}</p>
+        <h2>${dataTitle}
+        </h2>
+        <p>${info}</p>
+        <a href="${urlArticle}" target="_blank">read</a>
+        <p>release date: <span>${date}</span></br>
+        <span>${d.byline}</span></p>
+        </div>
+        </div>`);
+
     })
 }
 fetchData(url, key)
+
+// hover testing
+
+let redirectLink = document.querySelector('a')
+console.log(redirectLink)
