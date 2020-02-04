@@ -10,7 +10,7 @@ export function renderData(data) {
             date = d.published_date
 
         template.insertAdjacentHTML('afterbegin', `
-        <div class="articles"> 
+        <div class="article"> 
         <img src="${img}"> 
         <div class="contentwrap">
         <p>${d.section} ${d.subsection}</p>
@@ -25,3 +25,12 @@ export function renderData(data) {
 
     })
 }
+
+export function generateArticle(){
+    
+}
+
+//renderdata() //voor elk data element, call generateArticle
+//generateArticle() //returned html voor een article
+//renderHTML(generateArticle(), template)
+//renderHTML(htmlElement, sourceElement) //sourceElement.insertAdjacentHTML(htmlElement)

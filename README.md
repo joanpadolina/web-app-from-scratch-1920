@@ -1,22 +1,41 @@
-# Storytime
+# Breaking News
 
-New York times
-
-In this project I'm fetching stories from [The NewYorkTimes](https://developer.nytimes.com/). 
-The main focus are the top stories posten on Facebook.
+In todays news I've fetched different headlines form [The New York Times](https://developer.nytimes.com/). 
+The main focus are the top stories postend on New York Times.
 
 ## Goal
 
 1. Fetch data
 1. Render data to HTML and style it with CSS
 1. Filter on categorie
-1. Read full story 
-1. (extra time) Add to local storage
+1. Render full story 
+1. Add to local storage
+
+### Personal goals
+
+1. Create own template
+1. Different endpoints one display
+1. Make it more personal for user
 
 ## Clone project
-` 
+*this project uses the folowing:*
+* [Rollup](www.rollupjs.com)
+* [New York Times API](https://developer.nytimes.com/)
+* VSCODE
+
+in the terminal
+```
 git clone https://github.com/joanpadolina/web-app-from-scratch-1920.git
-` 
+``` 
+find the folder in the terminal and type in the following
+```
+npm install 
+```
+to start the localhost type in
+```
+npm run start
+```
+find your `localhost` in the browser 
 
 <!--
 

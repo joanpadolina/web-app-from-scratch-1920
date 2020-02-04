@@ -8,6 +8,7 @@ function randomData(set) {
     let items = Array.from(set)
     return items[Math.floor(Math.random() * items.length)]
 }
+
 let dataFill = randomData(dataChoices)
 let url = `https://api.nytimes.com/svc/topstories/v2/${dataFill}.json?api-key=`,
     key = "v3DhvEF1nEsrFnSSRFi2hKNf21OANMMd"

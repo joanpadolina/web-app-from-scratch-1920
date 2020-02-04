@@ -13,7 +13,7 @@
                 date = d.published_date;
 
             template.insertAdjacentHTML('afterbegin', `
-        <div class="articles"> 
+        <div class="article"> 
         <img src="${img}"> 
         <div class="contentwrap">
         <p>${d.section} ${d.subsection}</p>
@@ -29,12 +29,18 @@
         });
     }
 
+    //renderdata() //voor elk data element, call generateArticle
+    //generateArticle() //returned html voor een article
+    //renderHTML(generateArticle(), template)
+    //renderHTML(htmlElement, sourceElement) //sourceElement.insertAdjacentHTML(htmlElement)
+
     let dataChoices = ['home', 'arts', 'world'];
 
     function randomData(set) {
         let items = Array.from(set);
         return items[Math.floor(Math.random() * items.length)]
     }
+
     let dataFill = randomData(dataChoices);
     let url = `https://api.nytimes.com/svc/topstories/v2/${dataFill}.json?api-key=`,
         key = "v3DhvEF1nEsrFnSSRFi2hKNf21OANMMd";
