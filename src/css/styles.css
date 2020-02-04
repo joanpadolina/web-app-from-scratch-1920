@@ -27,23 +27,31 @@ input {
   padding: 1em;
   text-align: center;
   position: relative;
+  margin-bottom:2em;
 }
 
 .article {
-  height: 90vh;
-  width: 50vw;
+  height: 91vh;
+  width: 79vw;
 }
 
 .contentwrap {
-  width: 14em;
+  width: 13em;
   background: rgb(250, 250, 250);
   padding: 2em;
   border-radius: .2em;
   display: block;
   position: absolute;
-  margin-top: -22em;
-  margin-left: 29em;
+  margin-top: -12em;
+  margin-left: 19.2em;
   box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.53);
+  font-size: 0.8em;
+}
+#content{
+  width:90vw;
+}
+.containinfo{
+  max-width:100%;
 }
 
 h2 {
@@ -57,9 +65,10 @@ p {
 }
 
 img {
-  max-width: 35em;
-  max-height: 25em;
-  margin: 4em;
+  max-width: 100%;
+  height:20em;
+  object-fit: cover;
+  margin: .5em;
 
 }
 
@@ -93,10 +102,11 @@ a {
   width: 160px;
   height: 160px;
   top: 20px;
-  left: 20px;
+  left: 10em;
   border-radius: 50%;
   box-shadow: 0 4px 0 0 #e15b64;
   transform-origin: 80px 82px;
+
 
 }
 
@@ -106,8 +116,7 @@ a {
   display: inline-block;
   position: absolute;
   overflow: hidden;
-  margin: auto;
-  left:40%;
+
 
 }
 
