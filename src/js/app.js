@@ -1,7 +1,11 @@
 import {
-    renderData
-} from '../modules/articles.js'
+    cleanData
+} from '../modules/cleandata.js'
+import {generateArticle} from '../modules/createelement.js'
 
+import {searchBar, searchValue} from '../modules/search.js'
+
+let newsData = {}
 let dataChoices = ['home', 'arts', 'world']
 
 function randomData(set) {
@@ -13,13 +17,44 @@ let dataFill = randomData(dataChoices)
 let url = `https://api.nytimes.com/svc/topstories/v2/${dataFill}.json?api-key=`,
     key = "v3DhvEF1nEsrFnSSRFi2hKNf21OANMMd"
 
-async function fetchData() {
-    let data = await fetch(url + key)
+function fetchData() {
+    let data = fetch(url + key)
         .then(response => response.json())
         .then(data => data)
-        .then(results => renderData(results.results))
+        .then(results => {newsData = cleanData(results.results); generateArticle(newsData)})
         .catch(err => console.log(err))
-    return data
 }
+
+let button = document.querySelector('.button')
+button.addEventListener("click", ()=>{
+    searchBar(searchValue(),newsData)
+})
+
+
+
+
+
+
+
+
+//https://stackoverflow.com/questions/25253391/javascript-loading-screen-while-page-loads
+
+function onReady(callback) {
+    var intervalId = window.setInterval(function() {
+      if (document.getElementsByTagName('body')[0] !== undefined) {
+        window.clearInterval(intervalId);
+        callback.call(this);
+      }
+    }, 1000);
+  }
+  
+  function setVisible(selector, visible) {
+    document.querySelector(selector).style.display = visible ? 'block' : 'none';
+  }
+  
+  onReady(function() {
+    setVisible('.loadingio-eclipse', true);
+    setVisible('.ldio-rpinwye8j0b', false);
+  });
 
 fetchData()
