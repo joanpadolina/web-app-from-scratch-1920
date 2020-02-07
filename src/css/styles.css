@@ -32,7 +32,7 @@ input {
 
 .article {
   height: 91vh;
-  width: 79vw;
+  width: 50%;
 }
 
 .contentwrap {
@@ -48,10 +48,12 @@ input {
   font-size: 0.8em;
 }
 #content{
-  width:90vw;
+  width:100%;
 }
 .containinfo{
-  max-width:100%;
+  display: flex;
+  flex-wrap:wrap;
+  width: 100%;
 }
 
 h2 {
