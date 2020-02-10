@@ -1,4 +1,6 @@
-import { generateArticle } from "./createelement";
+import {
+    generateArticle
+} from "./createelement";
 
 export function searchBar(filter, data) {
     let searchValue = document.querySelector('input').value

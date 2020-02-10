@@ -11,7 +11,7 @@ export function generateArticle(data) {
             <h2>${item.dataTitle}
             </h2>
             <p>${item.info}</p>
-            <a href="${item.urlArticle}" target="_blank">read</a>
+            <a href="#article/${item.id}">read</a>
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>

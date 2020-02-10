@@ -10,55 +10,72 @@ import {
     searchValue
 } from '../modules/search.js'
 
-import {fetcher} from '../modules/fetch.js'
+// import {
+//     fetcher
+// } from '../modules/fetch.js'
+import {
+    filterData
+} from '../modules/filterData.js'
+
+import {
+    router
+} from '../modules/router.js'
 
 
+
+
+///
 let newsData = {}
-let dataChoices = ['home', 'arts', 'world']
+let categories = ['home', 'arts', 'world']
 
 function randomData(set) {
     let items = Array.from(set)
     return items[Math.floor(Math.random() * items.length)]
 }
 
-let dataFill = randomData(dataChoices)
+let dataFill = randomData(categories)
 let url = `https://api.nytimes.com/svc/topstories/v2/${dataFill}.json?api-key=`,
-    key = "v3DhvEF1nEsrFnSSRFi2hKNf21OANMMd"
-let livefeed = 'https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key='
+    key = 'v3DhvEF1nEsrFnSSRFi2hKNf21OANMMd'
+// let livefeed = 'https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key='
 
-// fetcher(livefeed + key)
+// function fetchFunc(params) {
+//     let data = new Promise((resolve, reject) => {
+//         fetch(url + key)
+//             .then((response) => {
+//                 return response.json()
+//             })
+//             .then((myJson) => {
+//                 resolve(myJson)    
+//             })
+//     })
+//     return data
+// }
+// async function name(params) {
+//     console.log(await fetchFunc());
+// }
+// name()
 
-function fetcher1(url, key2){
-    let data = fetch(url + key2)
-    .then(response => response.json())
-    .then(data => data.results)
-    .catch(err => console.log(err))
-
-    return data
-}
-fetcher1(livefeed+key)
 
 function fetchData() {
     let data = fetch(url + key)
         .then(response => response.json())
-        .then(data => data)
         .then(results => {
             newsData = cleanData(results.results);
+        })
+        .then(data => {
             generateArticle(newsData)
+            router(newsData)
         })
         .catch(err => console.log(err))
+    return data
 }
-
+fetchData()
 
 
 let button = document.querySelector('.button')
-button.addEventListener("click", () => {
+button.addEventListener('click', () => {
     searchBar(searchValue(), newsData)
 })
-
-
-
-
 
 
 
@@ -83,4 +100,12 @@ onReady(function () {
     setVisible('.ldio-rpinwye8j0b', false);
 });
 
-fetchData()
+// remove detailpagin
+// let img = document.querySelector('section')
+// console.log(img)
+
+// function removeDetail() {
+//     console.log('clicked')
+//     img.classList.add('detail-remove')
+// }
+// img.addEventListener('click', removeDetail)

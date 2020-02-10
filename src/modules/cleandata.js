@@ -1,7 +1,10 @@
+import {create_id} from '../modules/generateRandomData.js'
+
 export function cleanData(data) {
 
     const newData = data.map(d => {
         return {
+            id: create_id(),
             dataTitle: d.title,
             info: d.abstract,
             urlArticle: d.url,
