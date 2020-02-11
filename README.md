@@ -3,6 +3,11 @@
 In todays news I've fetched different headlines form [The New York Times](https://developer.nytimes.com/). 
 The main focus are the top stories postend on New York Times.
 
+## The Api
+
+So for this course I wanted to receive data from a new API. New York Times(NYT) has an own API where you can do lots of developer things. At this moment I'm working with the top selected news from te NYT but this can be broader by getting real-time feed from publishers. The have a variety of wich data you can fetch wich is nice is your still figuring out how API works.
+
+
 ## Goal
 
 1. Fetch data
