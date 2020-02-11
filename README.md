@@ -8,6 +8,8 @@ The main focus are the top stories postend on New York Times.
 So for this course I wanted to receive data from a new API. New York Times(NYT) has an own API where you can do lots of developer things. At this moment I'm working with the top selected news from te NYT but this can be broader by getting real-time feed from publishers. The have a variety of wich data you can fetch wich is nice is your still figuring out how API works.
 
 ## Diagrams
+
+*workinprogress*
 ![actordia](https://github.com/joanpadolina/web-app-from-scratch-1920/blob/master/readme-assets/actordiagram.png)
 ![interactiondia](https://github.com/joanpadolina/web-app-from-scratch-1920/blob/master/readme-assets/interaction-diagram.png)
 
