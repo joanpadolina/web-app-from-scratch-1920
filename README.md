@@ -1,4 +1,6 @@
 # Breaking News
+*workinprogress*
+![sketch](https://i.imgur.com/XC8UIae.png)
 
 In todays news I've fetched different headlines form [The New York Times](https://developer.nytimes.com/). 
 The main focus are the top stories postend on New York Times.
@@ -10,6 +12,7 @@ So for this course I wanted to receive data from a new API. New York Times(NYT) 
 ## Diagrams
 
 *workinprogress*
+
 ![actordia](https://github.com/joanpadolina/web-app-from-scratch-1920/blob/master/readme-assets/actordiagram.png)
 ![interactiondia](https://github.com/joanpadolina/web-app-from-scratch-1920/blob/master/readme-assets/interaction-diagram.png)
 
