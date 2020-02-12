@@ -9,6 +9,10 @@ import {
     cleanData,
     filterData
 } from './data.js'
+import {
+    searchBar,
+    searchValue
+} from './search.js'
 
 
 
@@ -18,6 +22,7 @@ export async function router() {
     routie({
         '': async () => {
             generateArticle(data)
+            searchBar(data)
         },
         'category': () => {
             console.log('article')

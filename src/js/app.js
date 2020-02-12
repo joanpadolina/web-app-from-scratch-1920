@@ -1,22 +1,9 @@
-import {
-    searchBar,
-    searchValue
-} from '../modules/search.js'
-
-import {
-    getTopTen
-} from '../modules/api'
-
 import {router} from '../modules/router.js'
 
 
 console.log('app.js')
 
 router()
-
-
-
-
 
 
 

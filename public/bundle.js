@@ -183,11 +183,23 @@
     //     return await getTopTen()
     // }
 
+    function searchBar(data) {
+        const searchValue = document.querySelector('input').value;
+        let filterOnValue = data.filter(item => {
+            if (item.dataTitle.includes(searchValue) || item.info.includes(searchValue) || item.section.includes(searchValue) || item.subsection.includes(searchValue)) {
+                return item
+            }
+        });
+        console.log('serachbarModule', searchValue);
+        return generateArticle(filterOnValue)
+    }
+
     async function router() {
         const data = await getTopTen();
         routie({
             '': async () => {
                 generateArticle(data);
+                searchBar(data);
             },
             'category': () => {
                 console.log('article');
@@ -217,10 +229,6 @@
     console.log('app.js');
 
     router();
-
-
-
-
 
 
 
