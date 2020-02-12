@@ -49,16 +49,18 @@
 
             containerEl.insertAdjacentHTML('afterbegin', `
         <div class="article"> 
-        <a href="#article/${item.id}"><img src="${item.img}"> </a>
-    <!--        <div class="contentwrap">
+        <a href="#article/${item.id}"><img id="img" src="${item.img}"> </a>
+           <div class="contentwrap" id="content">
             <p>${item.section} ${item.subsection}</p>
             <h2>${item.dataTitle}
             </h2>
+            <!-- 
             <p>${item.info}</p>
             <a href="#article/${item.id}">read</a>
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
-            </div> -->
+            -->
+            </div> 
         </div>`);
         });
         return htmlElement
