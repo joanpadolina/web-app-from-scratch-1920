@@ -1,28 +1,32 @@
-import { filterData } from "./filterData";
-import {detailPage } from './detailPage.js'
+import {
+    detailPage,
+    generateArticle
+} from './render.js'
+import {
+    getTopTen
+} from './api.js'
+import {
+    cleanData,
+    filterData
+} from './data.js'
 
 
-export function router(data) {
 
-    let findData = data
 
-    // console.log(findData)
-
+export async function router() {
+    const data = await getTopTen()
     routie({
-        'article': () => {
+        '': async () => {
+            generateArticle(data)
+        },
+        'category': () => {
             console.log('article')
         },
-        'article/:id': (id) => {
-          let article = findData.filter(item => {
-                if(item.id === id){
-                  return item
-                }
-            })  
-            detailPage(article)
-
-        },
-        'home': () => {
-            console.log('home')
+        'article/:id': async (id) => {
+            let filter = filterData(data, id)
+            console.log(filter[0])
+            filter[0]
+            detailPage(filter)
         },
         'about': () => {
             console.log('about')
@@ -30,3 +34,12 @@ export function router(data) {
         'error': () => {}
     })
 }
+
+// export function findData(data) {
+//     let article = findData.filter(item => {
+//         if (item.id == id) {
+//             return item
+//         }
+//     })
+//     return article
+// }

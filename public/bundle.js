@@ -14,7 +14,6 @@
     }
 
     function cleanData(data) {
-
         const newData = data.map(d => {
             return {
                 id: create_id(),
@@ -31,21 +30,27 @@
         return newData
     }
 
+    function filterData(data, id) {
+        let dataId = id;
+        let findData = data.filter(item => {
+            if(item.id == dataId) {
+             return item
+            }
+         });
+        return findData
 
-    //renderdata() //voor elk data element, call generateArticle
-    //generateArticle() //returned html voor een article
-    //renderHTML(generateArticle(), template)
-    //renderHTML(htmlElement, sourceElement) //sourceElement.insertAdjacentHTML(htmlElement)
+    }
 
     function generateArticle(data) {
+        const generateData = data;
 
         let containerEl = document.querySelector('.containinfo');
-        let htmlElement = data.map(item => {
+        let htmlElement = generateData.map(item => {
 
             containerEl.insertAdjacentHTML('afterbegin', `
         <div class="article"> 
-            <img src="${item.img}"> 
-            <div class="contentwrap">
+        <a href="#article/${item.id}"><img src="${item.img}"> </a>
+    <!--        <div class="contentwrap">
             <p>${item.section} ${item.subsection}</p>
             <h2>${item.dataTitle}
             </h2>
@@ -53,35 +58,18 @@
             <a href="#article/${item.id}">read</a>
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
-            </div>
+            </div> -->
         </div>`);
         });
         return htmlElement
     }
 
-    function searchBar(filter, data) {
-        let searchValue = document.querySelector('input').value;
-        let filterOnValue = data.filter(item => {
-            if (item.dataTitle.includes(searchValue) || item.info.includes(searchValue) || item.section.includes(searchValue) || item.subsection.includes(searchValue)) {
-                return item
-            }
-        });
-        console.log('serachbarModule', filterOnValue);
-        return generateArticle(filterOnValue)
-    }
-
-    function searchValue() {
-        let searchValue = document.querySelector('input').value;
-        return searchValue
-    }
-
     function detailPage(data){
         let containerEl = document.querySelector('.detail-page');
-        let htmlElement = data.filter(item => {
-
+        let htmlElement = data.map(item => {
             containerEl.insertAdjacentHTML('afterbegin', `
         <div class="detail"> 
-            <img src="${item.img}"> 
+            <img src="${item.img}">
             <div class="detail-content">
             <p>${item.section} ${item.subsection}</p>
             <h2>${item.dataTitle}
@@ -96,27 +84,117 @@
         return htmlElement
     }
 
-    function router(data) {
+    // function createElement(typeOfElement, options) {
+    //     if (typeOfElement === 'img') {
+    //         return createImg(options)
+    //     }
+    // }
 
-        let findData = data;
+    // function createImg(src) {
+    //     let newImg = document.createElement('img')
+    //     newImg.src = src
+    //     return newImg
+    // }
 
-        // console.log(findData)
+    // function renderElement(element, parent) {
+    //     parent.appendChild(element)
+    // }
 
+    // function detailPage(){
+        
+    // }
+
+    let categories = ['home', 'arts', 'world'];
+
+    function getRandomCategorie(set) {
+        let items = Array.from(set);
+        return items[Math.floor(Math.random() * items.length)]
+    }
+
+    let randomCategorie = getRandomCategorie(categories);
+    const urlTopNews = `https://api.nytimes.com/svc/topstories/v2/${randomCategorie}.json?api-key=`,
+        key = 'BhVpjVR9HGDaQ7JxSAyeClycD87PCRrt';
+    const apiCallTopNews = urlTopNews + key;
+
+
+    // export function getTopTen() {
+    //     let data = fetch(apiCallTopNews)
+    //         .then(response => response.json())
+    //         .then(results => {
+    //             return newsData = cleanData(results.results);
+    //         })
+    //         .then(data => {
+    //             generateArticle(newsData)
+    //             detailPage(newsData)
+    //         })
+    //         .catch(err => console.log(err))
+    //     return data
+    // }
+
+    // export function getMovieReviews(){
+    //     let data = fetch(apiCallToMovieReviews)
+    //     .then(response => response.json())
+    //     .then(results =>{
+    //        let movie = results.results
+    //        return movie
+    //     }).then(data => {
+    //         console.log(data)
+    //     })
+    //     return data
+    // }
+    // getMovieReviews()
+
+    // export function getWeather(){
+
+    // }
+
+    // let data;
+
+    // robin's promise mikaels resolve
+
+
+    function getTopTen(params) {
+        return new Promise((resolve, reject) => { // give a promise with a resolve and reject
+            fetch(apiCallTopNews)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((myJson) => {
+                    let data = myJson.results;
+                    resolve(cleanData(data));
+                })
+                .catch(err => {
+                    Promise.reject(new Error('fetch failed'))
+                    .then(resolve(err));
+                });
+        })
+    }
+
+    // defensive coding reject
+
+    // getTopTen(results => {
+    //    return newsData = results
+
+    // })
+    // async function name(params) {
+    //     console.log(params)
+    //     return await getTopTen()
+    // }
+
+    async function router() {
+        const data = await getTopTen();
         routie({
-            'article': () => {
+            '': async () => {
+                generateArticle(data);
+            },
+            'category': () => {
                 console.log('article');
             },
-            'article/:id': (id) => {
-              let article = findData.filter(item => {
-                    if(item.id === id){
-                      return item
-                    }
-                });  
-                detailPage(article);
-
-            },
-            'home': () => {
-                console.log('home');
+            'article/:id': async (id) => {
+                let filter = filterData(data, id);
+                console.log(filter[0]);
+                filter[0];
+                detailPage(filter);
             },
             'about': () => {
                 console.log('about');
@@ -125,58 +203,37 @@
         });
     }
 
-    ///
-    let newsData = {};
-    let categories = ['home', 'arts', 'world'];
-
-    function randomData(set) {
-        let items = Array.from(set);
-        return items[Math.floor(Math.random() * items.length)]
-    }
-
-    let dataFill = randomData(categories);
-    let url = `https://api.nytimes.com/svc/topstories/v2/${dataFill}.json?api-key=`,
-        key = 'v3DhvEF1nEsrFnSSRFi2hKNf21OANMMd';
-    // let livefeed = 'https://api.nytimes.com/svc/news/v3/content/all/all.json?api-key='
-
-    // function fetchFunc(params) {
-    //     let data = new Promise((resolve, reject) => {
-    //         fetch(url + key)
-    //             .then((response) => {
-    //                 return response.json()
-    //             })
-    //             .then((myJson) => {
-    //                 resolve(myJson)    
-    //             })
+    // export function findData(data) {
+    //     let article = findData.filter(item => {
+    //         if (item.id == id) {
+    //             return item
+    //         }
     //     })
-    //     return data
+    //     return article
     // }
-    // async function name(params) {
-    //     console.log(await fetchFunc());
-    // }
-    // name()
+
+    console.log('app.js');
+
+    router();
 
 
-    function fetchData() {
-        let data = fetch(url + key)
-            .then(response => response.json())
-            .then(results => {
-                newsData = cleanData(results.results);
-            })
-            .then(data => {
-                generateArticle(newsData);
-                router(newsData);
-            })
-            .catch(err => console.log(err));
-        return data
-    }
-    fetchData();
 
 
-    let button = document.querySelector('.button');
-    button.addEventListener('click', () => {
-        searchBar(searchValue(), newsData);
-    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

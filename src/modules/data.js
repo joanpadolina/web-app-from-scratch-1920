@@ -1,7 +1,9 @@
-import {create_id} from '../modules/generateRandomData.js'
+import {
+    create_id
+} from '../modules/generateRandomData.js'
+import {detailPage} from './render.js'
 
 export function cleanData(data) {
-
     const newData = data.map(d => {
         return {
             id: create_id(),
@@ -18,8 +20,17 @@ export function cleanData(data) {
     return newData
 }
 
+export function filterData(data, id) {
+    let dataId = id
+    let findData = data.filter(item => {
+        if(item.id == dataId) {
+         return item
+        }
+     })
+    return findData
 
-//renderdata() //voor elk data element, call generateArticle
-//generateArticle() //returned html voor een article
-//renderHTML(generateArticle(), template)
-//renderHTML(htmlElement, sourceElement) //sourceElement.insertAdjacentHTML(htmlElement)
+}
+
+export function saveToLocalStorage() {
+
+}

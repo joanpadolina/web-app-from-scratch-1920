@@ -1,9 +1,9 @@
 import {
     generateArticle
-} from "./createelement";
+} from './render';
 
 export function searchBar(filter, data) {
-    let searchValue = document.querySelector('input').value
+    const searchValue = document.querySelector('input').value
     let filterOnValue = data.filter(item => {
         if (item.dataTitle.includes(searchValue) || item.info.includes(searchValue) || item.section.includes(searchValue) || item.subsection.includes(searchValue)) {
             return item
