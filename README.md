@@ -24,7 +24,7 @@ So for this course I wanted to receive data from a new API. New York Times(NYT) 
 
 ### Personal goals
 
-1. Create own template
+1. Make a dashboard
 1. Different endpoints one display
 1. Make it more personal for user
 
@@ -46,7 +46,19 @@ to start the localhost type in
 ```
 npm run start
 ```
-find your `localhost` in the browser 
+find your `localhost` in the browser (this can be diffenrent on each device)
+** I'm working with vscode live server to do this try dowloading a live server for your code editor. **
+
+## Sources
+* Stackoverflow
+* MDN
+
+
+## Credits
+* Robin Stut
+* Maikel Sleebos
+
+
 
 <!--
 
