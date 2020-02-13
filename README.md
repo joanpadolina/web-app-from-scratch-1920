@@ -5,11 +5,20 @@
 In todays news I've fetched different headlines form [The New York Times](https://developer.nytimes.com/). 
 The main focus are the top stories postend on New York Times.
 
-## The Api
+## Table of content
+1. [API introduction](#the-api)
+1. [Diagrams (actor & interaction)](#diagrams)
+1. [Project goals](#goals)
+1. [Personal goals](#personal-goals)
+1. [Install project](#clone-project)
+1. [Sources](#source)
+1. [Credits](#credits)
+
+# The API
 
 So for this course I wanted to receive data from a new API. New York Times(NYT) has an own API where you can do lots of developer things. At this moment I'm working with the top selected news from te NYT but this can be broader by getting real-time feed from publishers. The have a variety of wich data you can fetch wich is nice is your still figuring out how API works.
 
-## Diagrams
+# Diagrams
 
 *workinprogress*
 
@@ -17,7 +26,7 @@ So for this course I wanted to receive data from a new API. New York Times(NYT) 
 ![interactiondia](https://github.com/joanpadolina/web-app-from-scratch-1920/blob/master/readme-assets/interaction-diagram.png)
 
 
-## Goal
+# Goals
 
 1. Fetch data
 1. Render data to HTML and style it with CSS
@@ -25,11 +34,14 @@ So for this course I wanted to receive data from a new API. New York Times(NYT) 
 1. Render full story 
 1. Add to local storage
 
-### Personal goals
+# Personal goals
 
-1. Make a dashboard
 1. Different endpoints one display
-1. Make it more personal for user
+1. Display items with that category
+1. Weather API(if enough time)
+1. Make it more personal for user (by adding to local storage and show this on profile)
+1. Use **promises** and **promise all**
+
 
 ## Clone project
 *this project uses the folowing:*
@@ -50,7 +62,7 @@ to start the localhost type in
 npm run start
 ```
 find your `localhost` in the browser (this can be diffenrent on each device)
-** I'm working with vscode live server to do this try dowloading a live server for your code editor. **
+**I'm working with vscode live server to do this try dowloading a live server for your code editor.**
 
 ## Sources
 * Stackoverflow
