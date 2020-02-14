@@ -2,8 +2,8 @@
 *workinprogress*
 ![sketch](https://i.imgur.com/XC8UIae.png)
 
-In todays news I've fetched different headlines form [The New York Times](https://developer.nytimes.com/). 
-The main focus are the top stories postend on New York Times.
+In todays news I've fetched different headlines from [The New York Times](https://developer.nytimes.com/). 
+The main focus are the top stories posted on New York Times.
 
 ## Table of content
 1. [API introduction](#the-api)
