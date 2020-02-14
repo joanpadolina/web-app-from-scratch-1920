@@ -11,13 +11,22 @@ The main focus are the top stories postend on New York Times.
 1. [Project goals](#goals)
 1. [Personal goals](#personal-goals)
 1. [Install project](#clone-project)
-1. [Sources](#source)
+1. [Sources](#sources)
 1. [Credits](#credits)
 
 # The API
 ![Imgur](https://i.imgur.com/w2TnLuk.png)
 
-So for this course I wanted to receive data from a new API. New York Times(NYT) has an own API where you can do lots of developer things. At this moment I'm working with the top selected news from te NYT but this can be broader by getting real-time feed from publishers. The have a variety of wich data you can fetch wich is nice is your still figuring out how API works.
+So for this course I wanted to receive data from a news API. The reason I choose this subject is for the sake of being up-to-date about what the world is talking about. In this case  New York Times(NYT) has his own API where you can do lots of developer things. At this moment I'm working with the top selected news from te NYT but this can be broader by getting real-time feed from publishers. They have tons of fetching methods to get the data you want. 
+The documentation is enough to get you through it and with a little search up on google you'll receive data in no-time.
+
+**Data structure**
+
+![article](https://i.imgur.com/z5mQLWl.png)
+
+*Note that de id was not available
+So I had to improvise and borrowed a random generator code from [W3resource](https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php)*
+
 
 # Diagrams
 
@@ -68,6 +77,7 @@ find your `localhost` in the browser (this can be diffenrent on each device)
 ## Sources
 * Stackoverflow
 * MDN
+* [W3resource](https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php)
 
 
 ## Credits
