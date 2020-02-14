@@ -1,4 +1,6 @@
-import {filterData} from './data.js'
+import {
+    filterData
+} from './data.js'
 
 
 export function generateArticle(data) {
@@ -8,7 +10,7 @@ export function generateArticle(data) {
     let htmlElement = generateData.map(item => {
 
         containerEl.insertAdjacentHTML('afterbegin', `
-        <div class="article"> 
+        <article> 
         <a href="#article/${item.id}"><img id="img" src="${item.img}"> </a>
            <div class="contentwrap" id="content">
             <p>${item.section} ${item.subsection}</p>
@@ -21,17 +23,18 @@ export function generateArticle(data) {
             <span>${item.author}</span></p>
             -->
             </div> 
-        </div>`)
+        </article>`)
     })
     return htmlElement
 }
 
-export function detailPage(data){
+export function detailPage(data) {
     let containerEl = document.querySelector('.detail-page')
     let htmlElement = data.map(item => {
         console.log(item)
         containerEl.insertAdjacentHTML('afterbegin', `
         <div class="detail"> 
+        <a href="">back</a>
             <img src="${item.img}">
             <div class="detail-content">
             <p>${item.section} ${item.subsection}</p>
@@ -42,27 +45,34 @@ export function detailPage(data){
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>
+            <button id="localSt"></button> 
         </div>`)
     })
     return htmlElement
 }
 
+
+
 // function createElement(typeOfElement, options) {
 //     if (typeOfElement === 'img') {
 //         return createImg(options)
 //     }
+//     // if(typeOfElement === 'p'){
+//     //     return createParagraph(optionss)
+//     // }
 // }
-
 // function createImg(src) {
 //     let newImg = document.createElement('img')
 //     newImg.src = src
 //     return newImg
 // }
 
+
+
 // function renderElement(element, parent) {
 //     parent.appendChild(element)
 // }
 
 // function detailPage(){
-    
+
 // }

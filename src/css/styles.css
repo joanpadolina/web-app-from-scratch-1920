@@ -6,9 +6,9 @@ body {
 
 /* radio button styling */
 
-input[type=radio] {
+/* input[type=radio] {
   display: none;
-}
+} */
 
 main section:first-of-type {
   width: 100vw;
@@ -18,9 +18,22 @@ main section:first-of-type {
   padding: .5em;
   background: white;
   padding-bottom:1.5em;
+  padding-top:1.5em;
 }
-
+button{
+  box-shadow:none;
+  background:none;
+  border:none;
+}
+button::before{
+  content: url(https://upload.wikimedia.org/wikipedia/commons/8/86/A_perfect_SVG_heart.svg);
+  position: relative;
+  display: block;
+  width: 0em;
+  transform: scale(.1);
+}
 label {
+  box-shadow: none;
   background: #d2d2d2;
   padding: .4em;
   width: 5em;
@@ -40,7 +53,7 @@ label:hover{
   background:darkgrey;
 }
 
-section article {
+/* section article {
   height: 100vh;
 }
 
@@ -58,7 +71,7 @@ section article:nth-child(3) {
 
 section article:nth-child(4) {
   background: purple;
-}
+} */
 
 header {
   height: 9em;
@@ -87,7 +100,7 @@ input {
   margin-bottom: 2em;
 }
 
-.article {
+article {
   height: 20em;
   width: 30em;
 }
@@ -154,9 +167,17 @@ img {
   height: 20em;
   width: 30em;
   object-fit: cover;
+  filter: grayscale(1);
+  transition:200ms ease-in-out;
 
 }
+img:hover{
+  filter:grayscale(0)blur(.1em);
 
+}
+.detail-page img{
+  filter:blur(0)grayscale(0);
+}
 .detail-page {
   height: 100%;
   width: 100%;
@@ -167,11 +188,22 @@ img {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+  position: fixed;
+  height:100%;
+  width:100%;
+  top: 0em;
+  z-index: 1;
+  background: white;
 }
 
 .detail img {
   width: 35rem;
   padding: 1em;
+  position: relative;
+  height: 100%;
+  object-fit: cover;
+  top: 0em;
+  box-sizing: border-box;
 }
 
 .detail-content {

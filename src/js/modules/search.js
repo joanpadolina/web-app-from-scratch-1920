@@ -9,7 +9,7 @@ export function searchBar(data) {
             return item
         }
     })
-    console.log('serachbarModule', searchValue)
+    // console.log('serachbarModule', searchValue)
     return generateArticle(filterOnValue)
 }
 

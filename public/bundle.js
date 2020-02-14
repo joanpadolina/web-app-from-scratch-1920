@@ -15,6 +15,7 @@
 
     function cleanData(data) {
         const newData = data.map(d => {
+            console.log(d);
             return {
                 id: create_id(),
                 dataTitle: d.title,
@@ -48,7 +49,7 @@
         let htmlElement = generateData.map(item => {
 
             containerEl.insertAdjacentHTML('afterbegin', `
-        <div class="article"> 
+        <article> 
         <a href="#article/${item.id}"><img id="img" src="${item.img}"> </a>
            <div class="contentwrap" id="content">
             <p>${item.section} ${item.subsection}</p>
@@ -61,17 +62,18 @@
             <span>${item.author}</span></p>
             -->
             </div> 
-        </div>`);
+        </article>`);
         });
         return htmlElement
     }
 
-    function detailPage(data){
+    function detailPage(data) {
         let containerEl = document.querySelector('.detail-page');
         let htmlElement = data.map(item => {
             console.log(item);
             containerEl.insertAdjacentHTML('afterbegin', `
         <div class="detail"> 
+        <a href="">back</a>
             <img src="${item.img}">
             <div class="detail-content">
             <p>${item.section} ${item.subsection}</p>
@@ -82,32 +84,39 @@
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>
+            <button id="localSt"></button> 
         </div>`);
         });
         return htmlElement
     }
 
+
+
     // function createElement(typeOfElement, options) {
     //     if (typeOfElement === 'img') {
     //         return createImg(options)
     //     }
+    //     // if(typeOfElement === 'p'){
+    //     //     return createParagraph(optionss)
+    //     // }
     // }
-
     // function createImg(src) {
     //     let newImg = document.createElement('img')
     //     newImg.src = src
     //     return newImg
     // }
 
+
+
     // function renderElement(element, parent) {
     //     parent.appendChild(element)
     // }
 
     // function detailPage(){
-        
+
     // }
 
-    let categories = ['home', 'arts', 'world'];
+    let categories = ['home', 'world'];
 
     function getRandomCategorie(set) {
         let items = Array.from(set);
@@ -115,10 +124,29 @@
     }
 
     let randomCategorie = getRandomCategorie(categories);
+
     const urlTopNews = `https://api.nytimes.com/svc/topstories/v2/${randomCategorie}.json?api-key=`,
         key = 'BhVpjVR9HGDaQ7JxSAyeClycD87PCRrt';
     const apiCallTopNews = urlTopNews + key;
+    // robin's promise mikaels resolve
 
+
+    function getTopTen(params) {
+        return new Promise((resolve, reject) => { // give a promise with a resolve and reject
+            fetch(apiCallTopNews)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((myJson) => {
+                    let data = myJson.results;
+                    resolve(cleanData(data));
+                })
+                .catch(err => {
+                    Promise.reject(new Error('fetch failed'))
+                        .then(resolve(err));
+                });
+        })
+    }
 
     // export function getTopTen() {
     //     let data = fetch(apiCallTopNews)
@@ -153,25 +181,6 @@
 
     // let data;
 
-    // robin's promise mikaels resolve
-
-
-    function getTopTen(params) {
-        return new Promise((resolve, reject) => { // give a promise with a resolve and reject
-            fetch(apiCallTopNews)
-                .then((response) => {
-                    return response.json()
-                })
-                .then((myJson) => {
-                    let data = myJson.results;
-                    resolve(cleanData(data));
-                })
-                .catch(err => {
-                    Promise.reject(new Error('fetch failed'))
-                    .then(resolve(err));
-                });
-        })
-    }
 
     // defensive coding reject
 
@@ -184,30 +193,17 @@
     //     return await getTopTen()
     // }
 
-    function searchBar(data) {
-        const searchValue = document.querySelector('input').value;
-        let filterOnValue = data.filter(item => {
-            if (item.dataTitle.includes(searchValue) || item.info.includes(searchValue) || item.section.includes(searchValue) || item.subsection.includes(searchValue)) {
-                return item
-            }
-        });
-        console.log('serachbarModule', searchValue);
-        return generateArticle(filterOnValue)
-    }
-
     async function router() {
         const data = await getTopTen();
         routie({
             '': async () => {
                 generateArticle(data);
-                searchBar(data);
             },
             'category': () => {
                 console.log('article');
             },
             'article/:id': async (id) => {
                 let filter = filterData(data, id);
-                console.log(filter[0]);
                 filter[0];
                 detailPage(filter);
             },
@@ -227,17 +223,21 @@
     //     return article
     // }
 
+    // localstorage
+    // click on a page give the details and if you like it click the like
+    // Add article to your local storage
+    // render localstorage to application
+
+    function readLater(){
+        const likeButton = document.getElementById('#localSt');
+
+        console.log(likeButton);
+    }
+
     console.log('app.js');
 
     router();
-
-
-
-
-
-
-
-
+    readLater();
 
 
 
