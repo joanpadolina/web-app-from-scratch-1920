@@ -1,6 +1,43 @@
 body {
   font-family: Roboto;
   margin: 0;
+  box-sizing: border-box;
+}
+
+/* radio button styling */
+
+input[type=radio] {
+  display: none;
+}
+
+main section:first-of-type {
+  width: 100vw;
+  position: sticky;
+  text-align: center;
+  top: 0;
+  padding: .5em;
+  background: white;
+  padding-bottom:1.5em;
+}
+
+label {
+  background: #d2d2d2;
+  padding: .4em;
+  width: 5em;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  border-radius: 4.4em;
+  color: white;
+  font-size: 0.8em;
+  transition:300ms ease-in-out;
+}
+input[type=radio]:checked + label{
+  background:rgb(230, 142, 84);
+}
+label:hover{
+  cursor:pointer;
+  background:darkgrey;
 }
 
 section article {
@@ -24,7 +61,7 @@ section article:nth-child(4) {
 }
 
 header {
-  height: 30vh;
+  height: 9em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,14 +118,14 @@ input {
   opacity: 0;
   transition: 300ms ease-in-out;
   transform-style: preserve-3d;
- 
+
 }
 
-a:hover ~ #content{
+a:hover~#content {
   opacity: 1;
   display: block;
   position: relative;
-  top:-9.4em;
+  top: -9.4em;
 }
 
 #content {

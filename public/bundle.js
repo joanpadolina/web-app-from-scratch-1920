@@ -5,12 +5,12 @@
 
     function create_id(){
         var dt = new Date().getTime();
-        var uuid = 'xxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = (dt + Math.random()*16)%16 | 0;
+        let randomNumber = 'xxxxxxxx'.replace(/[xy]/g, function(c) {
+            let r = (dt + Math.random()*16)%16 | 0;
             dt = Math.floor(dt/16);
             return (c=='x' ? r :(r&0x3|0x8)).toString(16)
         });
-        return uuid;
+        return randomNumber;
     }
 
     function cleanData(data) {
@@ -69,6 +69,7 @@
     function detailPage(data){
         let containerEl = document.querySelector('.detail-page');
         let htmlElement = data.map(item => {
+            console.log(item);
             containerEl.insertAdjacentHTML('afterbegin', `
         <div class="detail"> 
             <img src="${item.img}">
@@ -77,7 +78,7 @@
             <h2>${item.dataTitle}
             </h2>
             <p>${item.info}</p>
-            <a href="#article/${item.id}">read</a>
+            <a href="${item.urlArticle}" target="_blank">read</a>
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>

@@ -29,6 +29,7 @@ export function generateArticle(data) {
 export function detailPage(data){
     let containerEl = document.querySelector('.detail-page')
     let htmlElement = data.map(item => {
+        console.log(item)
         containerEl.insertAdjacentHTML('afterbegin', `
         <div class="detail"> 
             <img src="${item.img}">
@@ -37,7 +38,7 @@ export function detailPage(data){
             <h2>${item.dataTitle}
             </h2>
             <p>${item.info}</p>
-            <a href="#article/${item.id}">read</a>
+            <a href="${item.urlArticle}" target="_blank">read</a>
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>
