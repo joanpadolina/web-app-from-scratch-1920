@@ -57,7 +57,7 @@ So I had to improvise and borrowed a random generator code from [W3resource](htt
 *this project uses the folowing:*
 * [Rollup](www.rollupjs.com)
 * [New York Times API](https://developer.nytimes.com/)
-* VSCODE
+* and 'live server' package from VSCODE 
 
 in the terminal
 ```
@@ -81,8 +81,8 @@ find your `localhost` in the browser (this can be diffenrent on each device)
 
 
 ## Credits
-* Robin Stut
-* Maikel Sleebos
+* Robin Stut (Promise in to a variable)
+* Maikel Sleebos (new Promise with a async and await)
 
 
 
