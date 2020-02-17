@@ -1,8 +1,3 @@
-import {
-    filterData
-} from './data.js'
-
-
 export function generateArticle(data) {
     const generateData = data
 
@@ -45,12 +40,21 @@ export function detailPage(data) {
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>
-            <button id="localSt"></button> 
+            <button id="localSt" value="${item.id}" ></button> 
         </div>`)
     })
     return htmlElement
 }
+export function accountPage() {
+    console.log('acocunt')
+    let containerEl = document.querySelector('main')
+    console.log(containerEl)
+    let htmlElement = containerEl.insertAdjacentElement('afterbegin', `
+    <h1> YOO </h1>`)
 
+    console.log(htmlElement)
+    return htmlElement
+}
 
 
 // function createElement(typeOfElement, options) {

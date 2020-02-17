@@ -1,47 +1,6 @@
 (function () {
     'use strict';
 
-    // https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
-
-    function create_id(){
-        var dt = new Date().getTime();
-        let randomNumber = 'xxxxxxxx'.replace(/[xy]/g, function(c) {
-            let r = (dt + Math.random()*16)%16 | 0;
-            dt = Math.floor(dt/16);
-            return (c=='x' ? r :(r&0x3|0x8)).toString(16)
-        });
-        return randomNumber;
-    }
-
-    function cleanData(data) {
-        const newData = data.map(d => {
-            console.log(d);
-            return {
-                id: create_id(),
-                dataTitle: d.title,
-                info: d.abstract,
-                urlArticle: d.url,
-                img: d.multimedia[0].url,
-                date: d.published_date,
-                section: d.section,
-                subsection: d.subsection,
-                author: d.byline
-            }
-        });
-        return newData
-    }
-
-    function filterData(data, id) {
-        let dataId = id;
-        let findData = data.filter(item => {
-            if(item.id == dataId) {
-             return item
-            }
-         });
-        return findData
-
-    }
-
     function generateArticle(data) {
         const generateData = data;
 
@@ -84,12 +43,21 @@
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>
-            <button id="localSt"></button> 
+            <button id="localSt" value="${item.id}" ></button> 
         </div>`);
         });
         return htmlElement
     }
+    function accountPage() {
+        console.log('acocunt');
+        let containerEl = document.querySelector('main');
+        console.log(containerEl);
+        let htmlElement = containerEl.insertAdjacentElement('afterbegin', `
+    <h1> YOO </h1>`);
 
+        console.log(htmlElement);
+        return htmlElement
+    }
 
 
     // function createElement(typeOfElement, options) {
@@ -116,6 +84,46 @@
 
     // }
 
+    // https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
+
+    function create_id(){
+        var dt = new Date().getTime();
+        let randomNumber = 'xxxxxxxx'.replace(/[xy]/g, function(c) {
+            let r = (dt + Math.random()*16)%16 | 0;
+            dt = Math.floor(dt/16);
+            return (c=='x' ? r :(r&0x3|0x8)).toString(16)
+        });
+        return randomNumber;
+    }
+
+    function cleanData(data) {
+        const newData = data.map(d => {
+            return {
+                id: create_id(),
+                dataTitle: d.title,
+                info: d.abstract,
+                urlArticle: d.url,
+                img: d.multimedia[0].url,
+                date: d.published_date,
+                section: d.section,
+                subsection: d.subsection,
+                author: d.byline
+            }
+        });
+        return newData
+    }
+
+    function filterData(data, id) {
+        let dataId = id;
+        let findData = data.filter(item => {
+            if(item.id == dataId) {
+             return item
+            }
+         });
+        return findData
+
+    }
+
     let categories = ['home', 'world'];
 
     function getRandomCategorie(set) {
@@ -127,11 +135,15 @@
 
     const urlTopNews = `https://api.nytimes.com/svc/topstories/v2/${randomCategorie}.json?api-key=`,
         key = 'BhVpjVR9HGDaQ7JxSAyeClycD87PCRrt';
+    const urlArtNews = 'https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=';
     const apiCallTopNews = urlTopNews + key;
+    const apiCallToArt = urlArtNews + key;
+
+
     // robin's promise mikaels resolve
 
 
-    function getTopTen(params) {
+    function getTopNews() {
         return new Promise((resolve, reject) => { // give a promise with a resolve and reject
             fetch(apiCallTopNews)
                 .then((response) => {
@@ -147,6 +159,28 @@
                 });
         })
     }
+
+    function fetchArtNews(){
+        return new Promise((resolve, reject) => {
+            fetch(apiCallToArt)
+            .then((response) => {
+                return response.json()
+            })
+            .then((artJson) => {
+                let data = artJson.results;
+                resolve(cleanData(data));
+            })
+            .catch(err => {
+                Promise.reject(new Error('fetch failed'))
+                .then(resolve(err));
+            });
+        })
+    }
+
+
+
+
+
 
     // export function getTopTen() {
     //     let data = fetch(apiCallTopNews)
@@ -194,7 +228,8 @@
     // }
 
     async function router() {
-        const data = await getTopTen();
+        const data = await getTopNews();
+        const dataArts = await fetchArtNews();
         routie({
             '': async () => {
                 generateArticle(data);
@@ -202,49 +237,26 @@
             'category': () => {
                 console.log('article');
             },
+            'artnews':() => {
+                generateArticle(dataArts);
+            },
             'article/:id': async (id) => {
                 let filter = filterData(data, id);
+                let filter2 = filterData(dataArts, id);
+               
                 filter[0];
+                filter2[0];
+                
                 detailPage(filter);
+                detailPage(filter2);
+
             },
-            'about': () => {
-                console.log('about');
+            'account': () => {
+                accountPage();
             },
             'error': () => {}
         });
     }
-
-    // export function findData(data) {
-    //     let article = findData.filter(item => {
-    //         if (item.id == id) {
-    //             return item
-    //         }
-    //     })
-    //     return article
-    // }
-
-    // localstorage
-    // click on a page give the details and if you like it click the like
-    // Add article to your local storage
-    // render localstorage to application
-
-    function readLater(){
-        const likeButton = document.getElementById('#localSt');
-
-        console.log(likeButton);
-    }
-
-    console.log('app.js');
-
-    router();
-    readLater();
-
-
-
-
-
-
-
 
 
 
@@ -269,14 +281,21 @@
         setVisible('.ldio-rpinwye8j0b', false);
     });
 
-    // remove detailpagin
-    // let img = document.querySelector('section')
-    // console.log(img)
+    // localstorage
+    // click on a page give the details and if you like it click the like
+    // Add article to your local storage
+    // render localstorage to application
 
-    // function removeDetail() {
-    //     console.log('clicked')
-    //     img.classList.add('detail-remove')
-    // }
-    // img.addEventListener('click', removeDetail)
+    function readLater(){
+        const button = document.getElementById('#localSt');
+        console.log('nee',button);
+        let myStorage = window.localStorage;
+        console.log(myStorage);
+    }
+
+    console.log('app.js');
+
+    router();
+    readLater();
 
 }());

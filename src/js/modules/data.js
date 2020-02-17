@@ -1,11 +1,9 @@
 import {
     create_id
 } from './generateRandomData.js'
-import {detailPage} from './render.js'
 
 export function cleanData(data) {
     const newData = data.map(d => {
-        console.log(d)
         return {
             id: create_id(),
             dataTitle: d.title,

@@ -4,7 +4,8 @@
 // render localstorage to application
 
 export function readLater(){
-    const likeButton = document.getElementById('#localSt')
-
-    console.log(likeButton)
+    const button = document.getElementById('#localSt')
+    console.log('nee',button)
+    let myStorage = window.localStorage
+    console.log(myStorage)
 }
