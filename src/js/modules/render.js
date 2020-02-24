@@ -1,3 +1,8 @@
+import {
+    getTopNews
+} from './api.js'
+
+
 export function generateArticle(data) {
     const generateData = data
 
@@ -29,7 +34,7 @@ export function detailPage(data) {
         console.log(item)
         containerEl.insertAdjacentHTML('afterbegin', `
         <div class="detail"> 
-        <a href="">back</a>
+        <a href=""></a>
             <img src="${item.img}">
             <div class="detail-content">
             <p>${item.section} ${item.subsection}</p>
@@ -40,7 +45,6 @@ export function detailPage(data) {
             <p>release date: <span>${item.date}</span></br>
             <span>${item.author}</span></p>
             </div>
-            <button id="localSt" value="${item.id}" ></button> 
         </div>`)
     })
     return htmlElement
@@ -48,35 +52,43 @@ export function detailPage(data) {
 export function accountPage() {
     console.log('acocunt')
     let containerEl = document.querySelector('main')
-    console.log(containerEl)
-    let htmlElement = containerEl.insertAdjacentElement('afterbegin', `
-    <h1> YOO </h1>`)
+    let htmlElement = containerEl.insertAdjacentHTML('afterbegin', `
+    <div class="accountpage">
+    <h1> YOO </h1>
+    </div>`
+    )
 
     console.log(htmlElement)
     return htmlElement
 }
 
+export function moviesReviews(data){
+    console.log(data)
+    let containerEl = document.querySelector('main')
+    let htmlElement = data.map(item => {
+        containerEl.insertAdjacentHTML('afterbegin', `
+        <input type="text" id="myInput" placeholder="Search for names..">
+        <section class="movie-rev">
+        <div class="poster">
+        <img src="${item.img.src}">
+        </div>
+        <article>
+        <h1>${item.dataTitle}</h1>
+        <p>${item.summary}</p>
+        </article>
+        </section>`)
+    })
+    return htmlElement
+}
 
-// function createElement(typeOfElement, options) {
-//     if (typeOfElement === 'img') {
-//         return createImg(options)
-//     }
-//     // if(typeOfElement === 'p'){
-//     //     return createParagraph(optionss)
-//     // }
-// }
-// function createImg(src) {
-//     let newImg = document.createElement('img')
-//     newImg.src = src
-//     return newImg
-// }
+export function sortCopy(arr){
+    return arr.slice().sort((a, b) => { 
+        return a.subsection > b.subsection ? 1 : -1
+    })
+}
 
-
-
-// function renderElement(element, parent) {
-//     parent.appendChild(element)
-// }
-
-// function detailPage(){
-
-// }
+export function sortSection(arr){
+    return arr.slice().sort((a, b) => { 
+        return a.section > b.section ? 1 : -1
+    })
+}

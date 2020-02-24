@@ -5,7 +5,5 @@
 
 export function readLater(){
     const button = document.getElementById('#localSt')
-    console.log('nee',button)
     let myStorage = window.localStorage
-    console.log(myStorage)
 }

@@ -10,10 +10,21 @@ export function cleanData(data) {
             info: d.abstract,
             urlArticle: d.url,
             img: d.multimedia[0].url,
-            date: d.published_date,
+            date: new Date(d.published_date),
             section: d.section,
             subsection: d.subsection,
             author: d.byline
+        }
+    })
+    return newData
+}
+export function cleanMovie(data){
+    const newData = data.map(d => {
+        return{
+            id:create_id(),
+            dataTitle: d.display_title,
+            summary: d.summary_short,
+            img: d.multimedia
         }
     })
     return newData

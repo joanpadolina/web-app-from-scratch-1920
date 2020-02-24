@@ -16,10 +16,10 @@
   <header>
     <h1>New York News</h1>
   </header>
-  <nav>
+  <!-- <nav>
     <a href="">home</a>
     <a href="#account">profile</a>
-  </nav>
+  </nav> -->
 
 
   <main>
@@ -35,10 +35,20 @@
       <input type="radio" name="category" id="art">
       <label for="arts"><a href="#artnews">Arts </a> </label>
       <input type="radio" name="category" id="music">
-      <label for="music">Music</label>
+      <label for="movie"><a href="#movie"> Movies </a></label>
       <input type="radio" name="category" id="europe">
       <label for="world">World</label>
     </section>
+
+    <section id="sorting">
+      <label for="sorting">Sorteren op:</label>
+      <select id="sorting" name="sortlist">
+        <option value="default">default</option>
+        <option value="name">subcategory</option>
+        <option value="country">country</option>
+      </select>
+    </section>
+
     <section class="detail-page">
     </section>
     <section id="content">
