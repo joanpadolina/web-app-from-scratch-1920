@@ -1,6 +1,6 @@
 import {
     create_id
-} from './generateRandomData.js'
+} from '../lib/generateRandomData.js'
 
 export function cleanData(data) {
     const newData = data.map(d => {
@@ -18,29 +18,13 @@ export function cleanData(data) {
     })
     return newData
 }
-export function cleanMovie(data){
-    const newData = data.map(d => {
-        return{
-            id:create_id(),
-            dataTitle: d.display_title,
-            summary: d.summary_short,
-            img: d.multimedia
-        }
-    })
-    return newData
-}
-
 export function filterData(data, id) {
     let dataId = id
     let findData = data.filter(item => {
-        if(item.id == dataId) {
-         return item
+        if (item.id == dataId) {
+            return item
         }
-     })
+    })
     return findData
-
-}
-
-export function saveToLocalStorage() {
 
 }

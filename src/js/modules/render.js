@@ -1,13 +1,7 @@
-import {
-    getTopNews
-} from './api.js'
-
-
 export function generateArticle(data) {
     const generateData = data
-
-    let containerEl = document.querySelector('.containinfo')
-    let htmlElement = generateData.map(item => {
+    const containerEl = document.querySelector('.containinfo')
+    generateData.forEach(item => {
 
         containerEl.insertAdjacentHTML('afterbegin', `
         <article> 
@@ -25,12 +19,11 @@ export function generateArticle(data) {
             </div> 
         </article>`)
     })
-    return htmlElement
 }
 
 export function detailPage(data) {
-    let containerEl = document.querySelector('.detail-page')
-    let htmlElement = data.map(item => {
+    const containerEl = document.querySelector('.detail-page')
+    data.forEach(item => {
         console.log(item)
         containerEl.insertAdjacentHTML('afterbegin', `
         <div class="detail"> 
@@ -47,48 +40,28 @@ export function detailPage(data) {
             </div>
         </div>`)
     })
-    return htmlElement
+
 }
+
 export function accountPage() {
-    console.log('acocunt')
-    let containerEl = document.querySelector('main')
-    let htmlElement = containerEl.insertAdjacentHTML('afterbegin', `
+    const containerEl = document.querySelector('main')
+    containerEl.insertAdjacentHTML('afterbegin', `
     <div class="accountpage">
     <h1> YOO </h1>
-    </div>`
-    )
+    </div>`)
 
     console.log(htmlElement)
-    return htmlElement
+
 }
 
-export function moviesReviews(data){
-    console.log(data)
-    let containerEl = document.querySelector('main')
-    let htmlElement = data.map(item => {
-        containerEl.insertAdjacentHTML('afterbegin', `
-        <input type="text" id="myInput" placeholder="Search for names..">
-        <section class="movie-rev">
-        <div class="poster">
-        <img src="${item.img.src}">
-        </div>
-        <article>
-        <h1>${item.dataTitle}</h1>
-        <p>${item.summary}</p>
-        </article>
-        </section>`)
-    })
-    return htmlElement
-}
-
-export function sortCopy(arr){
-    return arr.slice().sort((a, b) => { 
+export function sortCopy(arr) {
+    return arr.slice().sort((a, b) => {
         return a.subsection > b.subsection ? 1 : -1
     })
 }
 
-export function sortSection(arr){
-    return arr.slice().sort((a, b) => { 
+export function sortSection(arr) {
+    return arr.slice().sort((a, b) => {
         return a.section > b.section ? 1 : -1
     })
 }
