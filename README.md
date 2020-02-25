@@ -1,6 +1,6 @@
 # Breaking News
 *workinprogress*
-![sketch](https://i.imgur.com/XC8UIae.png)
+![sketch](https://github.com/joanpadolina/web-app-from-scratch-1920/blob/master/readme-assets/Screenshot%202020-02-25%20at%2012.54.19.png)
 
 In todays news I've fetched different headlines from [The New York Times](https://developer.nytimes.com/). 
 The main focus are the top stories posted on New York Times.
