@@ -1,5 +1,5 @@
 # Breaking News
-*workinprogress*
+
 ![sketch](https://github.com/joanpadolina/web-app-from-scratch-1920/blob/master/readme-assets/Screenshot%202020-02-25%20at%2012.54.19.png)
 
 In todays news I've fetched different headlines from [The New York Times](https://developer.nytimes.com/). 
@@ -21,8 +21,17 @@ So for this course I wanted to receive data from a news API. The reason I choose
 The documentation is enough to get you through it and with a little search up on google you'll receive data in no-time.
 
 **Data structure**
-
-![article](https://i.imgur.com/z5mQLWl.png)
+```json
+            id:"5fdb8494",
+            dataTitle: "‘I Felt Like Crying’: Coronavirus Shakes China’s Expecting Mothers",
+            info: "Pregnant women describe a lonely, sometimes terrifying experience navigating..",
+            urlArticle: https://www.nytimes.com/2020/02/25/business/coronavirus-china-pregnant.html",
+            img: https://static01.nyt.com/images/2020/02/20/world/00china-mothers-1/merli..",
+            date: "Tue Feb 25 2020 11:00:26 GMT+0100 (Central European Standard Time)",
+            section:  "business",
+            subsection: "arts",
+            author: "By Alexandra Stevenson"
+```
 
 *Note that de id was not available
 So I had to improvise and borrowed a random generator code from [W3resource](https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php)*
