@@ -21,7 +21,7 @@ So for this course I wanted to receive data from a news API. The reason I choose
 The documentation is enough to get you through it and with a little search up on google you'll receive data in no-time.
 
 **Data structure**
-```json
+```js
             id:"5fdb8494",
             dataTitle: "‘I Felt Like Crying’: Coronavirus Shakes China’s Expecting Mothers",
             info: "Pregnant women describe a lonely, sometimes terrifying experience navigating..",
