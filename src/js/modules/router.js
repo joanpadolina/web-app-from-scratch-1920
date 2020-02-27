@@ -77,7 +77,7 @@ function sortByName(data) {
 //https://stackoverflow.com/questions/25253391/javascript-loading-screen-while-page-loads
 
 const onReady = (callback) => {
-    var intervalId = window.setInterval(function () {
+    let intervalId = window.setInterval(function () {
         if (document.getElementsByTagName('body')[0] !== undefined) {
             window.clearInterval(intervalId);
             callback.call(this);
