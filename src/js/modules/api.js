@@ -24,17 +24,6 @@ const apiCallToArt = urlArtNews + key
 // robin's promise mikaels resolve
 
 
-// const getTopNews = () => {
-//     return fetch(apiCallTopNews)
-//         .then((response) => {
-//             return response.json()
-//         })
-//         .then((myJson) => {
-//             let data = myJson.results
-//             return cleanData(data)
-//         })
-// }
-
 
 export async function getTopNews() {
     const response = await fetch(apiCallTopNews)
@@ -49,20 +38,3 @@ export async function fetchArtNews() {
     const data = myJson.results
     return cleanData(data)
 }
-
-// const fetchArtNews = () => {
-//     return new Promise((resolve, reject) => {
-//         fetch(apiCallToArt)
-//             .then((response) => {
-//                 return response.json()
-//             })
-//             .then((artJson) => {
-//                 let data = artJson.results
-//                 resolve(cleanData(data))
-//             })
-//             .catch(err => {
-//                 Promise.reject(new Error('fetch failed'))
-//                     .then(resolve(err))
-//             })
-//     })
-// }
