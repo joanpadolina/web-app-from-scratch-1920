@@ -93,6 +93,13 @@ find your `localhost` in the browser (this can be diffenrent on each device)
 * Robin Stut (Promise in to a variable)
 * Maikel Sleebos (new Promise with a async and await)
 
+## Reflection 
+
+For this assignment I had high expectations for what I was able to build from the News API. So in my case I'm a little disapointed with the end results. I did however spend a little more time with the routing and cleaning up my code. 
+Also I did a lot of research about promises and why/how to use it. Little did I know it was hard to understand. After this I kinda ran out of time and didn't finish what I originally wanted. Which was to use local storage and add an option to go to your account. I've also noticed I forget my little searchbar which was working at the first week but landed in the garbage after a while. I think because didn't work with steps I lost most of the features I wanted to build.
+Overal I did what I could and did more researching to things than fullfilling the assignments. I do like working with API's and always wanted to look for and API and see what I can get out of it.
+Rendering the API was new for me and got me all excited to be honest. So I will do this in my freetime.
+
 
 
 <!--
