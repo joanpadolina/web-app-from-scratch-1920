@@ -97,14 +97,14 @@
         });
         return newData
     }
-    function filterData(data, id) {
+    function getOneItemData(data, id) {
         let dataId = id;
         let findData = data.filter(item => {
             if (item.id == dataId) {
                 return item
             }
         });
-        return findData
+        return findData[0]
 
     }
 
@@ -128,17 +128,6 @@
     // robin's promise mikaels resolve
 
 
-    // const getTopNews = () => {
-    //     return fetch(apiCallTopNews)
-    //         .then((response) => {
-    //             return response.json()
-    //         })
-    //         .then((myJson) => {
-    //             let data = myJson.results
-    //             return cleanData(data)
-    //         })
-    // }
-
 
     async function getTopNews() {
         const response = await fetch(apiCallTopNews);
@@ -153,6 +142,22 @@
         const data = myJson.results;
         return cleanData(data)
     }
+
+
+    // new Promise use example delete later or not because I want to use it.
+
+    // const getTopNews = () => {
+    //     return fetch(apiCallTopNews)
+    //         .then((response) => {
+    //             return response.json()
+    //         })
+    //         .then((myJson) => {
+    //             let data = myJson.results
+    //             return cleanData(data)
+    //         })
+    // }
+
+
 
     // const fetchArtNews = () => {
     //     return new Promise((resolve, reject) => {
@@ -188,14 +193,18 @@
                 sortByName(dataArts);
             },
             'article/:id': (id) => {
-                let filter = filterData(data, id);
-                let filter2 = filterData(dataArts, id);
 
-                filter[0];
-                filter2[0];
+                // variable naam news detail en filter niet
+                // reduce one item
 
-                detailPage(filter);
-                detailPage(filter2);
+                let getOneItem = getOneItemData(data, id);
+                let getOneItem2 = getOneItemData(dataArts, id);
+                // console.log(getOneItem)
+                // getOneItem[0]
+                // getOneItem2[0]
+
+                detailPage(getOneItem);
+                detailPage(getOneItem2);
 
             },
             'account': () => {
@@ -233,19 +242,21 @@
     // page loader
 
     //https://stackoverflow.com/questions/25253391/javascript-loading-screen-while-page-loads
+    // functie in variabelen.
 
-    const onReady = (callback) => {
-        var intervalId = window.setInterval(function () {
+
+    function onReady(callback) {
+        let intervalId = window.setInterval(function () {
             if (document.getElementsByTagName('body')[0] !== undefined) {
                 window.clearInterval(intervalId);
                 callback.call(this);
             }
         }, 1000);
-    };
+    }
 
-    const setVisible = (selector, visible) => {
+    function setVisible(selector, visible) {
         document.querySelector(selector).style.display = visible ? 'block' : 'none';
-    };
+    }
 
     onReady(function () {
         setVisible('.loadingio-eclipse', true);
