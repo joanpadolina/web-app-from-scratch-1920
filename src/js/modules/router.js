@@ -10,7 +10,7 @@ import {
     fetchArtNews
 } from './api.js'
 import {
-    getOneItemData
+    filterData
 } from './data.js'
 
 export async function router() {
@@ -30,18 +30,14 @@ export async function router() {
             sortByName(dataArts)
         },
         'article/:id': (id) => {
+            let filter = filterData(data, id)
+            let filter2 = filterData(dataArts, id)
 
-            // variable naam news detail en filter niet
-            // reduce one item
+            filter[0]
+            filter2[0]
 
-            let getOneItem = getOneItemData(data, id)
-            let getOneItem2 = getOneItemData(dataArts, id)
-            // console.log(getOneItem)
-            // getOneItem[0]
-            // getOneItem2[0]
-
-            detailPage(getOneItem)
-            detailPage(getOneItem2)
+            detailPage(filter)
+            detailPage(filter2)
 
         },
         'account': () => {
@@ -79,10 +75,8 @@ function sortByName(data) {
 // page loader
 
 //https://stackoverflow.com/questions/25253391/javascript-loading-screen-while-page-loads
-// functie in variabelen.
 
-
-function onReady(callback) {
+const onReady = (callback) => {
     let intervalId = window.setInterval(function () {
         if (document.getElementsByTagName('body')[0] !== undefined) {
             window.clearInterval(intervalId);
@@ -91,7 +85,7 @@ function onReady(callback) {
     }, 1000);
 }
 
-function setVisible(selector, visible) {
+const setVisible = (selector, visible) => {
     document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 

@@ -18,13 +18,13 @@ export function cleanData(data) {
     })
     return newData
 }
-export function getOneItemData(data, id) {
+export function filterData(data, id) {
     let dataId = id
     let findData = data.filter(item => {
         if (item.id == dataId) {
             return item
         }
     })
-    return findData[0]
+    return findData
 
 }

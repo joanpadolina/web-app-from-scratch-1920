@@ -11,7 +11,7 @@ function getRandomCategorie(set) {
 
 let randomCategorie = getRandomCategorie(categories)
 
-const urlTopNews = `https://api.nytimes.com/svc/topstories/v2/${randomCategorie}.json?api-key=`,
+const urlTopNews = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=`,
     key = 'BhVpjVR9HGDaQ7JxSAyeClycD87PCRrt'
 
 const urlArtNews = 'https://api.nytimes.com/svc/topstories/v2/arts.json?api-key='

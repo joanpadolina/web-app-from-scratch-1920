@@ -97,14 +97,14 @@
         });
         return newData
     }
-    function getOneItemData(data, id) {
+    function filterData(data, id) {
         let dataId = id;
         let findData = data.filter(item => {
             if (item.id == dataId) {
                 return item
             }
         });
-        return findData[0]
+        return findData
 
     }
 
@@ -117,7 +117,7 @@
 
     let randomCategorie = getRandomCategorie(categories);
 
-    const urlTopNews = `https://api.nytimes.com/svc/topstories/v2/${randomCategorie}.json?api-key=`,
+    const urlTopNews = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=`,
         key = 'BhVpjVR9HGDaQ7JxSAyeClycD87PCRrt';
 
     const urlArtNews = 'https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=';
@@ -193,18 +193,14 @@
                 sortByName(dataArts);
             },
             'article/:id': (id) => {
+                let filter = filterData(data, id);
+                let filter2 = filterData(dataArts, id);
 
-                // variable naam news detail en filter niet
-                // reduce one item
+                filter[0];
+                filter2[0];
 
-                let getOneItem = getOneItemData(data, id);
-                let getOneItem2 = getOneItemData(dataArts, id);
-                // console.log(getOneItem)
-                // getOneItem[0]
-                // getOneItem2[0]
-
-                detailPage(getOneItem);
-                detailPage(getOneItem2);
+                detailPage(filter);
+                detailPage(filter2);
 
             },
             'account': () => {
@@ -242,21 +238,19 @@
     // page loader
 
     //https://stackoverflow.com/questions/25253391/javascript-loading-screen-while-page-loads
-    // functie in variabelen.
 
-
-    function onReady(callback) {
+    const onReady = (callback) => {
         let intervalId = window.setInterval(function () {
             if (document.getElementsByTagName('body')[0] !== undefined) {
                 window.clearInterval(intervalId);
                 callback.call(this);
             }
         }, 1000);
-    }
+    };
 
-    function setVisible(selector, visible) {
+    const setVisible = (selector, visible) => {
         document.querySelector(selector).style.display = visible ? 'block' : 'none';
-    }
+    };
 
     onReady(function () {
         setVisible('.loadingio-eclipse', true);
